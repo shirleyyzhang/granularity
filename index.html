@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Granularity — Financial Advice Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Granularity</span>
+      </div>
+      <p class="topbar-hint">Original text stays · click detail types to append inline · each type has its own color</p>
+      <div class="color-legend" id="color-legend" aria-label="Active ideas"></div>
+    </header>
+
+    <main class="chat">
+      <div class="message user">
+        <p>I have $12k in a high-yield savings account, $6,500 on a credit card at 22% APR, and I just got a raise. Should I pay off the card first or start investing in my 401(k)?</p>
+      </div>
+
+      <div class="message assistant" id="assistant-message">
+        <p>
+          <span class="peek-sentence" data-peek="Capture any 401(k) match, keep a cash buffer, then crush the 22% card before extra investing.">Short answer: do both, but in a clear order.</span>
+          <span
+            class="selectable"
+            data-id="high-interest-first"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >High-interest debt usually beats investing as a first priority</span>
+          <span class="peek-sentence" data-peek="A guaranteed 22% return from payoff is hard for markets to beat reliably.">— a guaranteed 22% return by paying the card off is hard for markets to match.</span>
+        </p>
+        <p>
+          <span class="peek-sentence" data-peek="Free match dollars often beat accelerating the card for that small contribution slice.">That said,</span>
+          <span
+            class="selectable"
+            data-id="employer-match"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >don't skip an employer 401(k) match if you have one</span>.
+          <span class="peek-sentence" data-peek="Contribute only enough to get the full match, then send surplus at the card.">That match is free money and often outweighs the interest you're paying on a smaller balance.</span>
+        </p>
+        <p>
+          <span class="peek-sentence" data-peek="Going to $0 cash is how people end up back on the card after a surprise bill.">Before you throw every spare dollar at the card,</span>
+          <span
+            class="selectable"
+            data-id="emergency-buffer"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >keep a small emergency buffer so you don't re-borrow</span>.
+          <span class="peek-sentence" data-peek="With $12k saved, you can pay the card and still keep thousands in HYSA.">Wiping savings to zero can push you back onto the card when something breaks.</span>
+        </p>
+        <p>
+          <span class="peek-sentence" data-peek="Automate investing the week the raise hits — before spending adjusts upward.">Once the card is gone,</span>
+          <span
+            class="selectable"
+            data-id="raise-split"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >use the raise to automate investing instead of lifestyle creep</span>
+          <span class="peek-sentence" data-peek="Split the raise: invest, refill buffer, small fun money — written percentages beat vibes.">— that's how the raise compounds instead of disappearing into a nicer apartment.</span>
+        </p>
+      </div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <label class="sr-only" for="chat-input">Message</label>
+        <textarea
+          id="chat-input"
+          class="composer-input"
+          rows="1"
+          placeholder="Ask a follow-up about your finances…"
+        ></textarea>
+        <button type="submit" class="composer-send" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+      <p class="composer-note" id="composer-note">Tell me more fills the textbox — edit it, add context, then send.</p>
+      <div class="bottom-spacer" aria-hidden="true"></div>
+    </main>
+  </div>
+
+  <div class="peek-tooltip" id="peek-tooltip" hidden role="tooltip"></div>
+  <div class="detail-menu" id="detail-menu" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
