@@ -62,6 +62,22 @@ npm start
 
 Open `http://localhost:3000`.
 
+### Deploy on Render
+
+The repo includes a [`render.yaml`](render.yaml) blueprint. One web service serves the static UI and `/api/*` routes.
+
+1. Push this repo to GitHub (already at [shirleyyzhang/granularity](https://github.com/shirleyyzhang/granularity) if you used the steps below).
+2. Open [Render → New Blueprint](https://dashboard.render.com/select-repo?type=blueprint) and connect the repo.
+3. When prompted for **OPENAI_API_KEY**, paste your key (Render stores it as a secret — never commit it).
+4. Click **Apply**. Render runs `npm install`, then `npm start`.
+5. Open the `*.onrender.com` URL Render gives you.
+
+Or use the one-click link (after the repo is on GitHub):
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/shirleyyzhang/granularity)
+
+**Note:** Free-tier services spin down after inactivity; the first request after idle may take ~30s.
+
 ### Demo in GitHub Codespaces
 
 1. Open the repo on GitHub → **Code** → **Codespaces** → **Create codespace**
